@@ -30,17 +30,17 @@ flip_v = true
 [node name="area" type="Area2D" parent="."]
 
 [node name="collision_top" type="CollisionShape2D" parent="area"]
-position = Vector2( 903.844, -121.134 )
+position = Vector2( 906.935, -136.588 )
 shape = SubResource( 1 )
 
 [node name="collision_down" type="CollisionShape2D" parent="area"]
-position = Vector2( 907.185, 763.323 )
+position = Vector2( 907.185, 784.959 )
 shape = SubResource( 2 )
 
 [node name="area_score" type="Area2D" parent="."]
 
 [node name="collision_score" type="CollisionShape2D" parent="area_score"]
-position = Vector2( 961.259, 315.268 )
+position = Vector2( 967.441, 327.632 )
 shape = SubResource( 3 )
 [connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
 [connection signal="body_entered" from="area_score" to="." method="_on_area_score_body_entered"]
