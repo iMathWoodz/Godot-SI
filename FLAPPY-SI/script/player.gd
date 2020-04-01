@@ -1,4 +1,4 @@
-extends RigidBody2D
+ extends RigidBody2D
 
 var is_live = true
 
