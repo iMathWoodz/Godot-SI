@@ -16,13 +16,18 @@ _global_script_class_icons={
 [application]
 
 config/name="FLAPPY-SI"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+
+[display]
+
+window/size/width=480
+window/size/height=640
 
 [editor_plugins]
 
@@ -37,6 +42,11 @@ touch={
  ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"
