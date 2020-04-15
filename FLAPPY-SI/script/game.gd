@@ -14,6 +14,17 @@ func count_score():
 	score += 1
 	$CanvasLayer/Label.text = str(score)	
 
+func game_over():
+	save_score.last_score = score
+	
+	if score > save_score.best_score:
+		save_score.best_score = score
+		
+	get_tree().change_scene("res://scenes/gameOver.tscn")
+	
+	
+
+
 
 
 

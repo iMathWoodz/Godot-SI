@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+save_score="*res://script/save_score.gd"
 
 [display]
 

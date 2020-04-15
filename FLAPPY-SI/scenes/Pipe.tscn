@@ -31,11 +31,11 @@ flip_v = true
 position = Vector2( -287.451, 9.27258 )
 
 [node name="collision_top" type="CollisionShape2D" parent="area"]
-position = Vector2( 906.935, -136.588 )
+position = Vector2( 1862.01, -136.588 )
 shape = SubResource( 1 )
 
 [node name="collision_down" type="CollisionShape2D" parent="area"]
-position = Vector2( 907.185, 784.959 )
+position = Vector2( 1859.17, 716.96 )
 shape = SubResource( 2 )
 
 [node name="area_score" type="Area2D" parent="."]

@@ -15,7 +15,8 @@ func _on_area_body_entered(body):
 	print(body.name)
 	if body.name == "Player":
 		body.queue_free()
-		get_tree().change_scene("res://scenes/gameOver.tscn")
+		game.game_over()
+		
 
 func _on_area_score_body_entered(body):
 	print("score - " + body.name)

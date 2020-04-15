@@ -80,7 +80,7 @@ scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 
 [node name="btn_restart" type="TouchScreenButton" parent="CanvasLayer"]
-position = Vector2( 133.825, 448.961 )
+position = Vector2( 132.238, 448.961 )
 normal = ExtResource( 1 )
 
 [node name="btn_menu" type="TouchScreenButton" parent="CanvasLayer"]

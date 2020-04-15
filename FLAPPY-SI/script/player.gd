@@ -18,7 +18,7 @@ func _process(delta):
 
 
 func flap():
-	linear_velocity = Vector2(0, -200)
+	linear_velocity = Vector2(0, -350)
 
 
 func _input(event):
