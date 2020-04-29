@@ -82,6 +82,6 @@ __meta__ = {
 position = Vector2( 160.556, 266.987 )
 scale = Vector2( 0.430356, 0.510575 )
 frames = SubResource( 3 )
-frame = 1
+frame = 4
 playing = true
 [connection signal="pressed" from="CanvasLayer/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
