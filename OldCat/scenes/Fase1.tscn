@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset/Tiles/Tile (2).png" type="Texture" id=2]
 [ext_resource path="res://tileset/fundo-fotografico-tecido-floresta-mundo-da-fantasia-50x30m-D_NQ_NP_621780-MLB28909771649_122018-F.jpg" type="Texture" id=3]
+[ext_resource path="res://tileset/font/Humble Boys demo.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://tileset/HUD/hud_heartFull.png" type="Texture" id=5]
+[ext_resource path="res://tileset/HUD/hud_heartEmpty.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Item.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -16,6 +20,11 @@ points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -25,19 +34,118 @@ points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
 } ]
 0/z_index = 0
 
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "empty",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "full",
+"speed": 5.0
+} ]
+
 [node name="Fase1" type="Node2D"]
 
-[node name="bg" type="Sprite" parent="."]
-position = Vector2( 608.07, 156.614 )
-scale = Vector2( 1.45702, 1.67881 )
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 1 )
+
+[node name="bg" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 310.362, 85.0795 )
+scale = Vector2( 1.79624, 1.87537 )
 texture = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 211.637, 328.114 )
 scale = Vector2( 0.3, 0.3 )
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+limit_left = 100
+limit_bottom = 600
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 cell_size = Vector2( 128, 128 )
 format = 1
-tile_data = PoolIntArray( 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 524305, 0, 0, 524306, 0, 0 )
+tile_data = PoolIntArray( 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 262164, 0, 0, 262165, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262169, 0, 0, 327706, 0, 0, 327707, 0, 0, 327708, 0, 0, 327709, 0, 0, 327710, 0, 0, 327711, 0, 0, 327712, 0, 0, 327713, 0, 0, 327714, 0, 0, 327715, 0, 0, 524305, 0, 0, 524306, 0, 0 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="score" type="Label" parent="HUD"]
+anchor_left = 0.035
+anchor_top = 0.034
+anchor_right = 0.358
+anchor_bottom = 0.174
+margin_left = 0.248104
+margin_top = 0.0499191
+margin_right = -0.503906
+margin_bottom = 0.0499115
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 7
+custom_constants/shadow_offset_y = 3
+text = "Score: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="life" type="Label" parent="HUD"]
+anchor_left = 0.812
+anchor_top = 0.119
+anchor_right = 0.938
+anchor_bottom = 0.221
+margin_left = -7.7467
+margin_top = 0.159096
+margin_right = 0.229309
+margin_bottom = -0.0408936
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 7
+custom_constants/shadow_offset_y = 3
+text = "Life: 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="minecraft-heart-clipart-1" type="AnimatedSprite" parent="HUD"]
+position = Vector2( 950.664, 44.4214 )
+frames = SubResource( 5 )
+animation = "full"
+
+[node name="minecraft-heart-clipart-2" type="AnimatedSprite" parent="HUD"]
+position = Vector2( 816.759, 45.8929 )
+frames = SubResource( 5 )
+animation = "empty"
+
+[node name="minecraft-heart-clipart-3" type="AnimatedSprite" parent="HUD"]
+position = Vector2( 885.919, 45.8929 )
+frames = SubResource( 5 )
+animation = "full"
+
+[node name="Coletaveis" type="Node2D" parent="."]
+
+[node name="Item" parent="Coletaveis" instance=ExtResource( 7 )]
+position = Vector2( 691.675, 398.66 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Item2" parent="Coletaveis" instance=ExtResource( 7 )]
+position = Vector2( 768.518, 404.149 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Item3" parent="Coletaveis" instance=ExtResource( 7 )]
+position = Vector2( 845.361, 401.405 )
+scale = Vector2( 0.5, 0.5 )
